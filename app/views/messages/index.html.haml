@@ -1,44 +1,20 @@
-.side-bar
-  .header
-    %h3.header__name
-      ユーザーネーム
-    %ul.header__lists
-      %li.list
-        = link_to do
-          = fa_icon 'pencil-square-o', class: 'icon'
-      %li.list
-        = link_to do
-          = fa_icon 'cog', class: 'icon'
-  .groups
-    .group
-      .group__name
-        グループ名
-      .group__message
-        新着メッセージ
-    .group
-      .group__name
-        グループ名
-      .group__message
-        新着メッセージ
-    .group
-      .group__name
-        グループ名
-      .group__message
-        新着メッセージ
 .wrapper
+
+  = render 'shared/side_bar'
+
   .chat
     .header
       .left-header
         .left-header__title
-          グループ名
+          （テスト）グループ名
         %ul.left-header__members
           Member：
           %li.member
-            メンバー名
+            メンバー名：かわいその１
           %li.member
-            メンバー名
+            メンバー名：かわいその２
           %li.member
-            メンバー名
+            メンバー名：かわいその３
       .right-header
         .right-header__button
           Edit
@@ -46,30 +22,30 @@
       .message
         .upper-message
           .upper-message__user-name
-            メンバー
+            かわい
           .upper-message__date
-            2017/04/04
+            2019/07/04
         .lower-meesage
           .lower-message__content
-            メッセージ
+            こんちは
       .message
         .upper-message
           .upper-message__user-name
-            メンバー
+            堀北真希
           .upper-message__date
-            2017/04/04
+            2019/07/04
         .lower-meesage
           .lower-message__content
-            メッセージ
+            最近暇ぽ
       .message
         .upper-message
           .upper-message__user-name
-            メンバー
+            石原さとみ
           .upper-message__date
-            2017/04/04
+            2019/07/04
         .lower-meesage
           .lower-message__content
-            メッセージ
+            別れたつら
     .form
       %form
         %input.form__message
