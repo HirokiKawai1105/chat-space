@@ -1,56 +1,26 @@
-.wrapper
-
-  = render 'shared/side_bar'
-
+.chatspace
+  .side-bar
+    = render 'shared/side_bar'
   .chat
     .header
       .left-header
         .left-header__title
-          （テスト）グループ名
+          = @group.name
         %ul.left-header__members
           Member：
-          %li.member
-            メンバー名：かわいその１
-          %li.member
-            メンバー名：かわいその２
-          %li.member
-            メンバー名：かわいその３
+          - @group.users.pluck(:name).each do |user|
+            = user
       .right-header
         .right-header__button
           Edit
     .messages
-      .message
-        .upper-message
-          .upper-message__user-name
-            かわい
-          .upper-message__date
-            2019/07/04
-        .lower-meesage
-          .lower-message__content
-            こんちは
-      .message
-        .upper-message
-          .upper-message__user-name
-            堀北真希
-          .upper-message__date
-            2019/07/04
-        .lower-meesage
-          .lower-message__content
-            最近暇ぽ
-      .message
-        .upper-message
-          .upper-message__user-name
-            石原さとみ
-          .upper-message__date
-            2019/07/04
-        .lower-meesage
-          .lower-message__content
-            別れたつら
+      = render @messages
+    
     .form
-      %form
-        %input.form__message
+      = form_for [@group, @message] , id: 'new_message' do |f|
+        = f.text_field :content, class: 'form__message', placeholder: 'type a message'
         .form__mask
-          %label.form__mask__image
+          = f.label :image, class: 'form__mask__image' do
             = fa_icon 'picture-o', class: 'icon'
-            %input.hidden{type: 'file'}
-        %input.form__submit{type: 'submit', value: 'Send'}
+            = f.file_field :image, class: 'hidden'
+        = f.submit 'Send', class: 'form__submit'
