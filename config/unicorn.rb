@@ -1,33 +1,26 @@
 #サーバ上でのアプリケーションコードが設置されているディレクトリを変数に入れておく
-$worker  = 2
-$timeout = 30
-$app_dir = "/var/www/rails/chat-space"
-$listen  = File.expand_path 'tmp/sockets/.unicorn.sock', $app_dir
-$pid     = File.expand_path 'tmp/pids/unicorn.pid', $app_dir
-$std_log = File.expand_path 'log/unicorn.log', $app_dir
-
-app_path = File.expand_path('/var/www/', chat-space)
+app_path = File.expand_path('../../', __FILE__)
 
 #アプリケーションサーバの性能を決定する
-worker_processes $worker
+worker_processes 1
 
 #アプリケーションの設置されているディレクトリを指定
-working_directory $app_dir
+working_directory app_path
 
 #Unicornの起動に必要なファイルの設置場所を指定
-pid $pid
+pid "#{app_path}/tmp/pids/unicorn.pid"
 
 #ポート番号を指定
-listen $listen
+listen 3000
 
 #エラーのログを記録するファイルを指定
-stderr_path $std_log
+stderr_path "#{app_path}/log/unicorn.stderr.log"
 
 #通常のログを記録するファイルを指定
-stdout_path $std_log
+stdout_path "#{app_path}/log/unicorn.stdout.log"
 
 #Railsアプリケーションの応答を待つ上限時間を設定
-timeout $timeout
+timeout 60
 
 #以下は応用的な設定なので説明は割愛
 
