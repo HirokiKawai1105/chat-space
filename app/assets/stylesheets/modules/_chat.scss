@@ -31,8 +31,10 @@
       line-height: 40px;
       margin-top: 28px;
       padding: 0 20px;
-      color: white;
-      text-decoration: none;
+      &__button a{
+        color: white;
+        text-decoration: none;
+      }
     }
   }
 
