@@ -38,11 +38,12 @@ $(document).on('turbolinks:load', function(){
       .done(function(data){
         var html = buildHTML(data);
         $('.messages').append(html)
+        $('')
         $('#new_message')[0].reset();
         $('.messages').animate({scrollTop: $('.message').last().offset().top + $('.messages').scrollTop()}, 1000, 'swing'); 
       })
       .fail(function(){
-        alert('非同期処理失敗');
+        alert('ボタン連打しすぎ！ダメ絶対！');
       })
     .always(function(){
       $('.form__submit').prop('disabled', false);

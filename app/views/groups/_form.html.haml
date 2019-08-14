@@ -1,7 +1,7 @@
 = form_for group do |f|
   - if group.errors.any?
     .chat-group-form__errors
-      %h2= "#{group.errors.full_messages.count}件のエラーが発生しました。"
+      %h2="#{group.errors.full_messages.count}件のエラーが発生しました。"
       %ul
         - group.errors.full_messages.each do |message|
           %li= message
@@ -22,10 +22,14 @@
         = f.label :name, "チャットメンバー", class: "chat-group-form__label"
       .chat-group-form__field--right
         #chat-group-users
-          .chat-group-user.clearfix
-            = hidden_field_tag 'group[user_ids][]', current_user.id
-            %p.chat-group-user__name
-              = current_user.name
+        - if group.users.any?
+          - group.users.each do |username|
+            .chat-group-user.clearfix
+              = hidden_field_tag 'group[user_ids][]', username.id
+            #chat-group-user-8.chat-group-user.clearfix.js-chat-member
+              %p.chat-group-user__name 
+                = username.name
+              %a.user-search-remove.chat-group-user__btn.chat-group-user__btn--remove.js-remove-btn 削除
           #member-search-result
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
