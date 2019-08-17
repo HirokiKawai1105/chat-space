@@ -24,7 +24,7 @@ $(document).on('turbolinks:load', function(){
 
   function appendErrUserToHTML(user) {
     var html = `<div class='listview__element--right-icon'>${ user }</div>`
-    member_list.append(html);
+    user_list.append(html);
   }
 
   $("#user-search-field").on("keyup", function() {
