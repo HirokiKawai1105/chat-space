@@ -45,10 +45,10 @@ $(document).on('turbolinks:load', function(){
       .fail(function(){
         alert('ボタン連打しすぎ！ダメ絶対！');
       })
-    .always(function(){
-      $('.form__submit').prop('disabled', false);
+      .always(function(){
+        $('.form__submit').prop('disabled', false);
+      })
     })
-  })
     var reloadMessages = function() {
         var last_message_id = $('.messages .message:last-child').data('message_id')
         $.ajax({
